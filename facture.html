@@ -1,63 +1,187 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Devis - Fousseny Service</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Devis - Fousseny Service</title>
+
+<style>
+:root {
+    --dark-green: #1d3331;
+    --white: #ffffff;
+    --light-bg: #f4f4f4;
+}
+body {
+    font-family: Arial;
+    background: var(--light-bg);
+    display: flex;
+    justify-content: center;
+}
+.facture-container {
+    background: white;
+    width: 850px;
+    border: 1px solid #ddd;
+}
+.brand-header {
+    display: flex;
+    padding: 20px;
+    border-bottom: 5px solid var(--dark-green);
+}
+.brand-name h1 {
+    margin: 0;
+    color: var(--dark-green);
+}
+.slogan-bar {
+    background: var(--dark-green);
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+.content {
+    padding: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th {
+    background: var(--dark-green);
+    color: white;
+    padding: 10px;
+}
+td {
+    border: 1px solid #eee;
+}
+input {
+    width: 100%;
+    border: none;
+    padding: 5px;
+}
+.totals-table {
+    width: 300px;
+    margin-left: auto;
+    border: 2px solid var(--dark-green);
+}
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.total-grand {
+    background: var(--dark-green);
+    color: white;
+    font-weight: bold;
+}
+.no-print {
+    margin: 10px;
+}
+@media print {
+    .no-print { display: none; }
+}
+</style>
+
 </head>
+
 <body>
-    <div class="doc-container">
-        <header class="brand-header">
-            <div class="logo-placeholder">🏛️</div>
-            <div class="brand-name">
-                <h1>FOUSSENY</h1>
-                <p>SERVICE</p>
-            </div>
-            <div style="margin-left:auto; text-align:right">
-                <h2 style="color:var(--dark-green); margin:0">DEVIS</h2>
-                <p>N° <input type="text" value="2026-..." style="width:80px; border-bottom:1px solid #000"></p>
-            </div>
-        </header>
 
-        <div class="content" style="padding:20px">
-            <p><strong>Client :</strong> <input type="text" placeholder="Nom du client" style="width:300px; border-bottom:1px dotted #ccc"></p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width:60px">Qté</th>
-                        <th>Désignation</th>
-                        <th style="width:120px">Prix Unit.</th>
-                        <th style="width:150px">Montant</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                    </tbody>
-            </table>
+<div class="facture-container">
 
-            <button class="btn-add" onclick="addRow()">+ Ajouter un article</button>
-
-            <div class="totals-box">
-                <div class="total-row">
-                    <span>Matériels</span>
-                    <input type="number" id="total-materiel" value="0" readonly style="text-align:right; font-weight:bold">
-                </div>
-                <div class="total-row">
-                    <span>Main d'œuvre</span>
-                    <input type="number" id="main-oeuvre" value="0" oninput="updateGrandTotal()" style="text-align:right; font-weight:bold">
-                </div>
-                <div class="total-row total-final">
-                    <span>TOTAL</span>
-                    <span id="grand-total">0 FCFA</span>
-                </div>
-            </div>
-
-            <div style="margin-top:150px">
-                <button class="btn-print" onclick="window.print()">🖨️ Imprimer / PDF</button>
-                <a href="index.html" style="margin-left:20px; color:var(--dark-green)">Retour au menu</a>
-            </div>
-        </div>
+<div class="brand-header">
+    <div>
+        <h1>FOUSSENY SERVICE</h1>
     </div>
-    <script src="script.js"></script>
+    <div style="margin-left:auto;">
+        <h2>DEVIS / FACTURE</h2>
+        N° <input value="2026-001">
+    </div>
+</div>
+
+<div class="slogan-bar">
+Nous donnons un sens à votre maison avec les plafonds staff
+</div>
+
+<div class="content">
+
+Client: <input placeholder="Nom client"><br><br>
+
+<table id="table">
+<thead>
+<tr>
+<th>Qté</th>
+<th>Désignation</th>
+<th>Prix</th>
+<th>Montant</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<button onclick="addRow()" class="no-print">➕ Ajouter ligne</button>
+
+<div class="totals-table">
+<div class="total-row">
+<span>Matériels</span>
+<span id="materiel">0</span>
+</div>
+
+<div class="total-row">
+<span>Main d'œuvre</span>
+<input id="main" value="0" oninput="calc()">
+</div>
+
+<div class="total-row total-grand">
+<span>TOTAL</span>
+<span id="total">0</span>
+</div>
+</div>
+
+<button onclick="window.print()" class="no-print">🖨️ Imprimer</button>
+
+</div>
+
+</div>
+
+<script>
+
+function addRow() {
+    let table = document.querySelector("#table tbody");
+
+    let row = document.createElement("tr");
+
+    row.innerHTML = `
+    <td><input type="number" value="1" oninput="calc()"></td>
+    <td><input type="text"></td>
+    <td><input type="number" value="0" oninput="calc()"></td>
+    <td class="montant">0</td>
+    `;
+
+    table.appendChild(row);
+}
+
+function calc() {
+    let rows = document.querySelectorAll("#table tbody tr");
+    let totalMateriel = 0;
+
+    rows.forEach(row => {
+        let qty = row.children[0].children[0].value;
+        let price = row.children[2].children[0].value;
+
+        let montant = qty * price;
+        row.children[3].innerText = montant.toLocaleString();
+
+        totalMateriel += montant;
+    });
+
+    document.getElementById("materiel").innerText = totalMateriel.toLocaleString();
+
+    let main = parseInt(document.getElementById("main").value) || 0;
+
+    let total = totalMateriel + main;
+
+    document.getElementById("total").innerText = total.toLocaleString() + " FCFA";
+}
+
+</script>
+
 </body>
 </html>
