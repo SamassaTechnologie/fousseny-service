@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
+    addRow(); // 🔥 ajoute une ligne automatiquement
+});
+
 function addRow() {
     let table = document.querySelector("#table tbody");
 
@@ -8,6 +12,7 @@ function addRow() {
 
     <td>
     <select onchange="custom(this)">
+        <option value="">-- Choisir --</option>
         <option>Platre</option>
         <option>Filasse</option>
         <option>Recuit</option>
@@ -28,7 +33,7 @@ function addRow() {
 
 function calc() {
     let rows = document.querySelectorAll("#table tbody tr");
-    let totalMat = 0;
+    let total = 0;
 
     rows.forEach(r => {
         let q = r.children[0].children[0].value;
@@ -37,16 +42,15 @@ function calc() {
         let m = q * p;
         r.children[3].innerText = m.toLocaleString();
 
-        totalMat += m;
+        total += m;
     });
 
-    document.getElementById("materiel").innerText = totalMat.toLocaleString();
+    document.getElementById("materiel").innerText = total.toLocaleString();
 
     let main = parseInt(document.getElementById("main").value) || 0;
 
-    let total = totalMat + main;
-
-    document.getElementById("total").innerText = total.toLocaleString() + " FCFA";
+    document.getElementById("total").innerText =
+        (total + main).toLocaleString() + " FCFA";
 }
 
 function custom(select) {
