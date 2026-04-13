@@ -44,3 +44,39 @@ button {
     color: white;
     border: none;
 }
+/* STYLE IMPRESSION A4 */
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    .print-area {
+        width: 100%;
+    }
+
+    input {
+        border: none;
+    }
+
+    table {
+        border: 2px solid black;
+    }
+
+    th, td {
+        border: 1px solid black;
+        font-size: 14px;
+    }
+
+    h1, h2, h3 {
+        text-align: center;
+    }
+
+    .footer {
+        margin-top: 50px;
+    }
+}
