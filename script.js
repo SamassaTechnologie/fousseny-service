@@ -22,10 +22,10 @@ function calc() {
         let price = table.rows[i].cells[2].children[0].value;
 
         let line = qty * price;
-        table.rows[i].cells[3].innerText = line.toLocaleString();
+        table.rows[i].cells[3].innerText = line;
 
         total += line;
     }
 
-    document.getElementById("total").innerText = total.toLocaleString();
+    document.getElementById("total").innerText = total;
 }
