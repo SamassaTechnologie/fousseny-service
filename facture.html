@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Facture</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Devis - Fousseny Service</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="doc-container">
+        <header class="brand-header">
+            <div class="logo-placeholder">🏛️</div>
+            <div class="brand-name">
+                <h1>FOUSSENY</h1>
+                <p>SERVICE</p>
+            </div>
+            <div style="margin-left:auto; text-align:right">
+                <h2 style="color:var(--dark-green); margin:0">DEVIS</h2>
+                <p>N° <input type="text" value="2026-..." style="width:80px; border-bottom:1px solid #000"></p>
+            </div>
+        </header>
 
-<h2>FACTURE</h2>
+        <div class="content" style="padding:20px">
+            <p><strong>Client :</strong> <input type="text" placeholder="Nom du client" style="width:300px; border-bottom:1px dotted #ccc"></p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:60px">Qté</th>
+                        <th>Désignation</th>
+                        <th style="width:120px">Prix Unit.</th>
+                        <th style="width:150px">Montant</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    </tbody>
+            </table>
 
-<p>Date: <input type="date"></p>
-<p>Client: <input type="text"></p>
+            <button class="btn-add" onclick="addRow()">+ Ajouter un article</button>
 
-<table id="table">
-<tr>
-<th>Qté</th>
-<th>Désignation</th>
-<th>Prix Unit</th>
-<th>Montant</th>
-</tr>
-</table>
+            <div class="totals-box">
+                <div class="total-row">
+                    <span>Matériels</span>
+                    <input type="number" id="total-materiel" value="0" readonly style="text-align:right; font-weight:bold">
+                </div>
+                <div class="total-row">
+                    <span>Main d'œuvre</span>
+                    <input type="number" id="main-oeuvre" value="0" oninput="updateGrandTotal()" style="text-align:right; font-weight:bold">
+                </div>
+                <div class="total-row total-final">
+                    <span>TOTAL</span>
+                    <span id="grand-total">0 FCFA</span>
+                </div>
+            </div>
 
-<button onclick="addRow()">➕ Ajouter</button>
-
-<h3>Total : <span id="total">0</span> FCFA</h3>
-
-<button onclick="window.print()">🖨️ Imprimer</button>
-
-<footer>
-FOUSSENY SERVICE – Kayes ATT Bougou – 82 91 57 09
-</footer>
-
-<script src="script.js"></script>
-
+            <div style="margin-top:150px">
+                <button class="btn-print" onclick="window.print()">🖨️ Imprimer / PDF</button>
+                <a href="index.html" style="margin-left:20px; color:var(--dark-green)">Retour au menu</a>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
