@@ -8,24 +8,39 @@
 
 <body>
 
-<h2>DEVIS</h2>
+<div class="print-area">
 
-<input type="text" placeholder="Nom du client" id="client">
+    <h1>FOUSSENY SERVICE</h1>
+    <p>Kayes ATT Bougou</p>
 
-<table id="table">
-<tr>
-<th>Qté</th>
-<th>Désignation</th>
-<th>Prix</th>
-<th>Total</th>
-</tr>
-</table>
+    <h2>DEVIS</h2>
 
-<button onclick="addRow()">➕ Ajouter</button>
+    <div class="info">
+        <span>Client: <input type="text" id="client"></span>
+        <span>Date: <input type="date"></span>
+    </div>
 
-<h3>Total : <span id="total">0</span> FCFA</h3>
+    <table id="table">
+        <tr>
+            <th>Qté</th>
+            <th>Désignation</th>
+            <th>Prix Unit</th>
+            <th>Montant</th>
+        </tr>
+    </table>
 
-<button onclick="window.print()">🖨️ Imprimer / PDF</button>
+    <button onclick="addRow()" class="no-print">➕ Ajouter</button>
+
+    <h3>Total : <span id="total">0</span> FCFA</h3>
+
+    <div class="footer">
+        <p>Arrêté le présent devis à la somme de : ____________ FCFA</p>
+        <p>Signature Client __________________</p>
+    </div>
+
+</div>
+
+<button onclick="window.print()" class="no-print">🖨️ Imprimer</button>
 
 <script src="script.js"></script>
 
