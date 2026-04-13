@@ -1,46 +1,108 @@
+:root {
+    --dark-green: #1d3331; /* Couleur de la carte */
+    --white: #ffffff;
+    --light-bg: #f4f4f4;
+}
+
 body {
-    font-family: Arial;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--light-bg);
+    margin: 0;
+    color: #333;
+}
+
+/* En-tête */
+.brand-header {
+    background: var(--white);
     padding: 20px;
-    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 5px solid var(--dark-green);
 }
 
-header {
-    text-align: center;
-    background: #0f4c4c;
+.logo-placeholder { font-size: 40px; margin-right: 15px; }
+.brand-name h1 { margin: 0; font-size: 32px; color: var(--dark-green); letter-spacing: 2px; }
+.brand-name p { margin: 0; font-size: 14px; letter-spacing: 1px; color: var(--dark-green); }
+
+.slogan-bar {
+    background: var(--dark-green);
     color: white;
-    padding: 20px;
-}
-
-.menu {
-    margin: 30px;
+    padding: 10px;
     text-align: center;
+    font-style: italic;
+    font-size: 14px;
 }
 
-.menu a {
-    display: block;
-    margin: 10px;
-    padding: 15px;
-    background: #0f4c4c;
-    color: white;
+/* Menu principal */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+    align-items: center;
+}
+
+.menu-card {
+    background: white;
     text-decoration: none;
-    border-radius: 5px;
+    color: var(--dark-green);
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.menu-card:hover { transform: scale(1.05); }
+.menu-card .icon { font-size: 40px; display: block; margin-bottom: 10px; }
+
+/* Styles pour Devis et Facture */
+.doc-container {
+    background: white;
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 table {
     width: 100%;
-    background: white;
     border-collapse: collapse;
+    margin: 20px 0;
 }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
+th { background: var(--dark-green); color: white; padding: 10px; text-align: left; }
+td { border: 1px solid #ddd; padding: 8px; }
+
+input { border: none; width: 100%; outline: none; background: transparent; font-family: inherit; }
+input:focus { background: #fffde7; }
+
+.btn-add { background: #27ae60; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; }
+.btn-print { background: #2980b9; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; }
+
+.totals-box {
+    float: right;
+    width: 300px;
+    border: 2px solid var(--dark-green);
+    margin-top: 20px;
 }
 
-button {
-    margin: 10px;
-    padding: 10px;
-    background: green;
-    color: white;
-    border: none;
+.total-row { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
+.total-final { background: var(--dark-green); color: white; font-weight: bold; }
+
+.footer-contact {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+@media print {
+    .btn-add, .btn-print, .menu-container { display: none; }
+    body { background: white; }
+    .doc-container { box-shadow: none; border: none; width: 100%; }
 }
