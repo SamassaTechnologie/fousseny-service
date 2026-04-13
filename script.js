@@ -1,37 +1,58 @@
 function addRow() {
-    let table = document.getElementById("table-body");
-    let row = table.insertRow();
+    let table = document.querySelector("#table tbody");
+
+    let row = document.createElement("tr");
 
     row.innerHTML = `
-        <td><input type="number" value="1" oninput="calc()"></td>
-        <td><input type="text" placeholder="Désignation"></td>
-        <td><input type="number" value="0" oninput="calc()"></td>
-        <td class="lineTotal" style="text-align:right">0</td>
+    <td><input type="number" value="1" oninput="calc()"></td>
+
+    <td>
+    <select onchange="custom(this)">
+        <option>Platre</option>
+        <option>Filasse</option>
+        <option>Recuit</option>
+        <option>Pointe Acier</option>
+        <option>Pointe ordinaire</option>
+        <option>Graissage</option>
+        <option value="custom">Autre...</option>
+    </select>
+    </td>
+
+    <td><input type="number" value="0" oninput="calc()"></td>
+
+    <td class="montant">0</td>
     `;
-    calc();
+
+    table.appendChild(row);
 }
 
 function calc() {
-    let table = document.getElementById("table-body");
-    let totalMateriel = 0;
+    let rows = document.querySelectorAll("#table tbody tr");
+    let totalMat = 0;
 
-    for (let i = 0; i < table.rows.length; i++) {
-        let qty = table.rows[i].cells[0].children[0].value || 0;
-        let price = table.rows[i].cells[2].children[0].value || 0;
-        let line = qty * price;
-        
-        table.rows[i].cells[3].innerText = line.toLocaleString() + " FCFA";
-        totalMateriel += line;
-    }
+    rows.forEach(r => {
+        let q = r.children[0].children[0].value;
+        let p = r.children[2].children[0].value;
 
-    document.getElementById("total-materiel").value = totalMateriel;
-    updateGrandTotal();
+        let m = q * p;
+        r.children[3].innerText = m.toLocaleString();
+
+        totalMat += m;
+    });
+
+    document.getElementById("materiel").innerText = totalMat.toLocaleString();
+
+    let main = parseInt(document.getElementById("main").value) || 0;
+
+    let total = totalMat + main;
+
+    document.getElementById("total").innerText = total.toLocaleString() + " FCFA";
 }
 
-function updateGrandTotal() {
-    let mat = parseFloat(document.getElementById("total-materiel").value) || 0;
-    let main = parseFloat(document.getElementById("main-oeuvre").value) || 0;
-    let grandTotal = mat + main;
-    
-    document.getElementById("grand-total").innerText = grandTotal.toLocaleString() + " FCFA";
+function custom(select) {
+    if (select.value === "custom") {
+        let input = document.createElement("input");
+        input.placeholder = "Entrer désignation";
+        select.parentNode.replaceChild(input, select);
+    }
 }
