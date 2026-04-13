@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Fousseny Service</title>
-<link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOUSSENY SERVICE - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1d3331">
 </head>
+<body class="home-body">
+    <header class="brand-header">
+        <div class="logo-placeholder">🏛️</div>
+        <div class="brand-name">
+            <h1>FOUSSENY</h1>
+            <p>SERVICE</p>
+        </div>
+    </header>
 
-<body style="font-family: Arial; text-align:center;">
+    <div class="slogan-bar">
+        "Nous donnons un sens à votre maison avec les plafonds staff"
+    </div>
 
-<h1>FOUSSENY SERVICE</h1>
-<p>Gestion Devis & Facture</p>
+    <main class="menu-container">
+        <a href="devis.html" class="menu-card">
+            <span class="icon">📄</span>
+            <h2>Créer un Devis</h2>
+        </a>
+        <a href="facture.html" class="menu-card">
+            <span class="icon">🧾</span>
+            <h2>Créer une Facture</h2>
+        </a>
+    </main>
 
-<a href="devis.html">📄 Créer un Devis</a><br><br>
-<a href="facture.html">🧾 Créer une Facture</a>
+    <footer class="footer-contact">
+        <p>Kayes ATT Bougou – 82 91 57 09 / 64 85 32 98</p>
+        <p>WhatsApp : 64 60 03 06</p>
+    </footer>
 
-<script>
-if ('serviceWorker' in navigator) {
- navigator.serviceWorker.register('service-worker.js');
-}
-</script>
-
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
 </body>
 </html>
