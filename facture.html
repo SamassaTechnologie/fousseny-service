@@ -1,92 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Devis</title>
-
-<style>
-:root { --dark-green:#1d3331; }
-body { font-family: Arial; background:#f4f4f4; display:flex; justify-content:center; }
-.container { width:850px; background:white; }
-
-.header { display:flex; padding:20px; border-bottom:5px solid var(--dark-green); }
-.slogan { background:var(--dark-green); color:white; text-align:center; padding:10px; }
-
-.content { padding:20px; }
-
-table { width:100%; border-collapse:collapse; }
-th { background:var(--dark-green); color:white; padding:10px; }
-td { border:1px solid #eee; }
-
-input, select { width:100%; border:none; padding:5px; }
-
-.total-box { width:300px; margin-left:auto; border:2px solid var(--dark-green); }
-.row { display:flex; justify-content:space-between; padding:10px; }
-.total { background:var(--dark-green); color:white; }
-
-.no-print { margin:10px; }
-
-@media print { .no-print { display:none; } }
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis - Fousseny Service</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="doc-container">
+        <header class="brand-header">
+            <div class="logo-placeholder">🏛️</div>
+            <div class="brand-name">
+                <h1>FOUSSENY</h1>
+                <p>SERVICE</p>
+            </div>
+            <div class="doc-meta">
+                <h2 id="doc-title">FACTURE</h2>
+                <p>N° <input type="text" id="doc-number" placeholder="2026-001"></p>
+            </div>
+        </header>
 
-<div class="container">
+        <div class="slogan-bar">
+            "Nous donnons un sens à votre maison avec les plafonds staff"
+        </div>
 
-<div class="header">
-<h1>FOUSSENY SERVICE</h1>
-<div style="margin-left:auto">
-DEVIS N° <input value="2026-001" style="width:100px;">
-</div>
-</div>
+        <div class="content">
+            <div class="info-section">
+                <div>
+                    <strong>Client :</strong><br>
+                    <input type="text" placeholder="Nom du client" class="input-client">
+                </div>
+                <div class="text-right">
+                    <strong>Lieu & Date :</strong><br>
+                    Kayes, le <input type="text" id="current-date" class="input-date">
+                </div>
+            </div>
 
-<div class="slogan">
-Nous donnons un sens à votre maison avec les plafonds staff
-</div>
+            <table id="main-table">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">Qté</th>
+                        <th style="width: 50%;">Désignation</th>
+                        <th style="width: 20%;">Prix Unit.</th>
+                        <th style="width: 20%;">Montant</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    </tbody>
+            </table>
 
-<div class="content">
+            <div class="actions no-print">
+                <button class="btn-add" onclick="addRow()">+ Ajouter une ligne</button>
+            </div>
 
-Client: <input><br><br>
+            <div class="totals-area">
+                <div class="totals-table">
+                    <div class="total-row">
+                        <span>Total Matériels</span>
+                        <span id="total-materiel">0 FCFA</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Main d'œuvre</span>
+                        <input type="number" id="main-oeuvre" value="0" oninput="calculateTotal()" class="text-right bold">
+                    </div>
+                    <div class="total-row total-grand">
+                        <span>TOTAL GÉNÉRAL</span>
+                        <span id="grand-total">0 FCFA</span>
+                    </div>
+                </div>
+            </div>
 
-<table id="table">
-<thead>
-<tr>
-<th>Qté</th>
-<th>Désignation</th>
-<th>Prix</th>
-<th>Montant</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
+            <footer class="footer-contact">
+                <div class="contact-grid">
+                    <div><strong>Téléphones :</strong> 82 91 57 09 / 64 85 32 98</div>
+                    <div><strong>WhatsApp :</strong> 64 60 03 06</div>
+                    <div><strong>Adresse :</strong> Kayes ATT Bougou</div>
+                </div>
+            </footer>
+        </div>
+    </div>
 
-<button onclick="addRow()" class="no-print">➕ Ajouter</button>
+    <div class="floating-actions no-print">
+        <button class="btn-print" onclick="window.print()">🖨️ Imprimer / PDF</button>
+        <a href="index.html" class="btn-back">⬅️ Retour</a>
+    </div>
 
-<div class="total-box">
-<div class="row">
-<span>Matériels</span>
-<span id="materiel">0</span>
-</div>
-
-<div class="row">
-<span>Main d'œuvre</span>
-<input id="main" value="0" oninput="calc()">
-</div>
-
-<div class="row total">
-<span>TOTAL</span>
-<span id="total">0</span>
-</div>
-</div>
-
-<button onclick="window.print()" class="no-print">🖨️ Imprimer</button>
-
-</div>
-</div>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
