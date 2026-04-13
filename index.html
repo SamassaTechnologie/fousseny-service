@@ -1,44 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOUSSENY SERVICE - Accueil</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOUSSENY SERVICE</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
 </head>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+  .then(() => console.log("Service Worker enregistré"));
+}
+</script>
 <body>
-    <header class="brand-header">
-        <div class="logo-placeholder">🏛️</div>
-        <div class="brand-name">
-            <h1>FOUSSENY</h1>
-            <p>SERVICE</p>
-        </div>
-    </header>
 
-    <div class="slogan-bar">
-        "Nous donnons un sens à votre maison avec les plafonds staff"
-    </div>
+<header>
+    <h1>FOUSSENY SERVICE</h1>
+    <p>Nous donnons un sens à votre maison avec les plafonds staff</p>
+</header>
 
-    <main class="menu-container">
-        <a href="devis.html" class="menu-card">
-            <span class="icon">📄</span>
-            <h2>Créer un Devis</h2>
-        </a>
-        <a href="facture.html" class="menu-card">
-            <span class="icon">🧾</span>
-            <h2>Créer une Facture</h2>
-        </a>
-    </main>
+<div class="menu">
+    <a href="devis.html">📄 Créer un Devis</a>
+    <a href="facture.html">🧾 Créer une Facture</a>
+</div>
 
-    <footer class="footer-contact">
-        <p>Kayes ATT Bougou – 82 91 57 09 / 64 85 32 98 – Info: 64 60 03 06</p>
-    </footer>
+<footer>
+FOUSSENY SERVICE – Kayes ATT Bougou – 82 91 57 09 / 64 85 32 98 – Info: 64 60 03 06
+</footer>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js');
-        }
-    </script>
 </body>
 </html>
