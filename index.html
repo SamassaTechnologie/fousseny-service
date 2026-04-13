@@ -1,34 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOUSSENY SERVICE</title>
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis - Fousseny Service</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-  .then(() => console.log("Service Worker enregistré"));
-}
-</script>
 <body>
 
-<header>
-    <h1>FOUSSENY SERVICE</h1>
-    <p>Nous donnons un sens à votre maison avec les plafonds staff</p>
-</header>
+<div class="facture-container">
+    <header class="brand-header">
+        <div class="logo-placeholder">🏛️</div>
+        <div class="brand-name">
+            <h1>FOUSSENY</h1>
+            <p>SERVICE</p>
+        </div>
+        <div class="doc-type">
+            <h2>DEVIS / FACTURE</h2>
+            <p>N° <input type="text" value="2026-001"></p>
+        </div>
+    </header>
 
-<div class="menu">
-    <a href="devis.html">📄 Créer un Devis</a>
-    <a href="facture.html">🧾 Créer une Facture</a>
+    <div class="slogan-bar">
+        "Nous donnons un sens à votre maison avec les plafonds staff"
+    </div>
+
+    <main class="content">
+        <div class="info-section">
+            <div class="info-box">
+                <strong>Client :</strong><br>
+                <input type="text" placeholder="Nom du client">
+            </div>
+            <div class="info-box text-right">
+                <strong>Lieu & Date :</strong><br>
+                Kayes, le <input type="text" value="13/04/2026">
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-qte">Qté</th>
+                    <th>Désignation</th>
+                    <th class="col-price">Prix Unit.</th>
+                    <th class="col-total">Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value="35"></td>
+                    <td><input type="text" value="Platre"></td>
+                    <td><input type="text" value="7500"></td>
+                    <td><input type="text" class="text-right" value="262.500"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value="35"></td>
+                    <td><input type="text" value="Filasse"></td>
+                    <td><input type="text" value="2500"></td>
+                    <td><input type="text" class="text-right" value="87.500"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value="2"></td>
+                    <td><input type="text" value="Recuit"></td>
+                    <td><input type="text" value="2500"></td>
+                    <td><input type="text" class="text-right" value="5.000"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value="2"></td>
+                    <td><input type="text" value="Pointe Acier"></td>
+                    <td><input type="text" value="2000"></td>
+                    <td><input type="text" class="text-right" value="4.000"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value="3"></td>
+                    <td><input type="text" value="Pointe ordinaire"></td>
+                    <td><input type="text" value="1000"></td>
+                    <td><input type="text" class="text-right" value="3.000"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value="11"></td>
+                    <td><input type="text" value="Graissage"></td>
+                    <td><input type="text" value="//"></td>
+                    <td><input type="text" class="text-right" value="8.000"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="totals-area">
+            <div class="totals-table">
+                <div class="total-row">
+                    <span>Matériels</span>
+                    <input type="text" class="text-right bold-input" value="370.000 FCFA">
+                </div>
+                <div class="total-row">
+                    <span>Main d'œuvre</span>
+                    <input type="text" class="text-right bold-input" value="275.000 FCFA">
+                </div>
+                <div class="total-row total-grand">
+                    <span>TOTAL</span>
+                    <input type="text" class="text-right bold-input white-text" value="645.000 FCFA">
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-contact">
+            <div>
+                <strong>Téléphones</strong><br>
+                82 91 57 09 / 64 85 32 98
+            </div>
+            <div>
+                <strong>Info / WhatsApp</strong><br>
+                64 60 03 06
+            </div>
+            <div>
+                <strong>Adresse</strong><br>
+                Kayes ATT Bougou
+            </div>
+        </footer>
+    </main>
 </div>
-
-<footer>
-FOUSSENY SERVICE – Kayes ATT Bougou – 82 91 57 09 / 64 85 32 98 – Info: 64 60 03 06
-</footer>
 
 </body>
 </html>
