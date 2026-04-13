@@ -1,82 +1,181 @@
+:root {
+    --dark-green: #1d3331;
+    --white: #ffffff;
+    --light-bg: #f4f4f4;
+}
+
 body {
-    font-family: Arial;
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: var(--light-bg);
+    display: flex;
+    justify-content: center;
     padding: 20px;
-    background: #f5f5f5;
+    color: #333;
+    margin: 0;
 }
 
-header {
-    text-align: center;
-    background: #0f4c4c;
+.facture-container {
+    background-color: white;
+    width: 100%;
+    max-width: 850px;
+    padding: 0;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.brand-header {
+    background-color: var(--white);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    border-bottom: 5px solid var(--dark-green);
+}
+
+.logo-placeholder {
+    font-size: 50px;
+    margin-right: 20px;
+    color: var(--dark-green);
+}
+
+.brand-name {
+    color: var(--dark-green);
+}
+
+.brand-name h1 {
+    margin: 0;
+    font-size: clamp(24px, 5vw, 42px);
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.brand-name p {
+    margin: 5px 0 0 0;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.doc-type {
+    margin-left: auto;
+    text-align: right;
+}
+
+.doc-type h2 {
+    color: var(--dark-green);
+    margin: 0;
+}
+
+.doc-type input {
+    width: 100px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+}
+
+.slogan-bar {
+    background-color: var(--dark-green);
     color: white;
-    padding: 20px;
-}
-
-.menu {
-    margin: 30px;
+    padding: 15px 30px;
     text-align: center;
+    font-size: 16px;
 }
 
-.menu a {
-    display: block;
-    margin: 10px;
-    padding: 15px;
-    background: #0f4c4c;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+.content {
+    padding: 30px;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.info-box input {
+    border: none;
+    border-bottom: 1px dotted #ccc;
+    padding: 5px;
+    width: 200px;
 }
 
 table {
     width: 100%;
-    background: white;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-button {
-    margin: 10px;
-    padding: 10px;
-    background: green;
+th {
+    background-color: var(--dark-green);
     color: white;
-    border: none;
+    padding: 12px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 13px;
 }
-/* STYLE IMPRESSION A4 */
+
+td {
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+input {
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+}
+
+input:focus {
+    background-color: #fffde7;
+}
+
+.text-right { text-align: right; }
+.bold-input { font-weight: bold; }
+.white-text { color: white !important; }
+
+.totals-area {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.totals-table {
+    width: 100%;
+    max-width: 350px;
+    border: 2px solid var(--dark-green);
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.total-grand {
+    background-color: var(--dark-green);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.footer-contact {
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 13px;
+    color: #555;
+    text-align: center;
+    gap: 15px;
+}
+
+.footer-contact strong {
+    color: var(--dark-green);
+}
+
 @media print {
-
-    body {
-        background: white;
-    }
-
-    .no-print {
-        display: none;
-    }
-
-    .print-area {
-        width: 100%;
-    }
-
-    input {
-        border: none;
-    }
-
-    table {
-        border: 2px solid black;
-    }
-
-    th, td {
-        border: 1px solid black;
-        font-size: 14px;
-    }
-
-    h1, h2, h3 {
-        text-align: center;
-    }
-
-    .footer {
-        margin-top: 50px;
-    }
+    body { background: white; padding: 0; }
+    .facture-container { box-shadow: none; border: none; }
 }
