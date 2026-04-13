@@ -1,62 +1,68 @@
-document.addEventListener("DOMContentLoaded", () => {
-    addRow(); // 🔥 ajoute une ligne automatiquement
+// Liste des articles prédéfinis
+const ARTICLES = ["Platre", "Filasse", "Recuit", "Pointe Acier", "Pointe ordinaire", "Graissage", "Autre"];
+
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+    // Date auto
+    const d = new Date();
+    document.getElementById('current-date').value = d.toLocaleDateString('fr-FR');
+    
+    // Numéro auto (basé sur l'heure pour l'exemple)
+    if(document.getElementById('doc-number').value === "") {
+        document.getElementById('doc-number').value = d.getFullYear() + "-" + Math.floor(Math.random() * 1000);
+    }
+
+    // Ajouter la première ligne
+    addRow();
 });
 
 function addRow() {
-    let table = document.querySelector("#table tbody");
-
-    let row = document.createElement("tr");
+    const tbody = document.getElementById('table-body');
+    const row = tbody.insertRow();
+    
+    // Création du Select
+    let optionsHtml = ARTICLES.map(art => `<option value="${art}">${art}</option>`).join('');
 
     row.innerHTML = `
-    <td><input type="number" value="1" oninput="calc()"></td>
-
-    <td>
-    <select onchange="custom(this)">
-        <option value="">-- Choisir --</option>
-        <option>Platre</option>
-        <option>Filasse</option>
-        <option>Recuit</option>
-        <option>Pointe Acier</option>
-        <option>Pointe ordinaire</option>
-        <option>Graissage</option>
-        <option value="custom">Autre...</option>
-    </select>
-    </td>
-
-    <td><input type="number" value="0" oninput="calc()"></td>
-
-    <td class="montant">0</td>
+        <td><input type="number" value="1" class="qty" oninput="calculateTotal()"></td>
+        <td>
+            <select class="designation-select" onchange="handleOther(this)">
+                ${optionsHtml}
+            </select>
+            <input type="text" class="other-input" style="display:none; margin-top:5px" placeholder="Précisez...">
+        </td>
+        <td><input type="number" value="0" class="price" oninput="calculateTotal()"></td>
+        <td class="line-total text-right bold">0 FCFA</td>
     `;
-
-    table.appendChild(row);
+    calculateTotal();
 }
 
-function calc() {
-    let rows = document.querySelectorAll("#table tbody tr");
-    let total = 0;
-
-    rows.forEach(r => {
-        let q = r.children[0].children[0].value;
-        let p = r.children[2].children[0].value;
-
-        let m = q * p;
-        r.children[3].innerText = m.toLocaleString();
-
-        total += m;
-    });
-
-    document.getElementById("materiel").innerText = total.toLocaleString();
-
-    let main = parseInt(document.getElementById("main").value) || 0;
-
-    document.getElementById("total").innerText =
-        (total + main).toLocaleString() + " FCFA";
+function handleOther(select) {
+    const otherInput = select.nextElementSibling;
+    otherInput.style.display = (select.value === "Autre") ? "block" : "none";
 }
 
-function custom(select) {
-    if (select.value === "custom") {
-        let input = document.createElement("input");
-        input.placeholder = "Entrer désignation";
-        select.parentNode.replaceChild(input, select);
+function calculateTotal() {
+    const rows = document.getElementById('table-body').rows;
+    let totalMateriel = 0;
+
+    for (let row of rows) {
+        const qty = parseFloat(row.querySelector('.qty').value) || 0;
+        const price = parseFloat(row.querySelector('.price').value) || 0;
+        const lineTotal = qty * price;
+        
+        row.querySelector('.line-total').innerText = formatMoney(lineTotal);
+        totalMateriel += lineTotal;
     }
+
+    document.getElementById('total-materiel').innerText = formatMoney(totalMateriel);
+    
+    const mainOeuvre = parseFloat(document.getElementById('main-oeuvre').value) || 0;
+    const grandTotal = totalMateriel + mainOeuvre;
+    
+    document.getElementById('grand-total').innerText = formatMoney(grandTotal);
+}
+
+function formatMoney(amount) {
+    return amount.toLocaleString('fr-FR') + " FCFA";
 }
