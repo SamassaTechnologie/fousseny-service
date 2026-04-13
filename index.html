@@ -2,33 +2,23 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOUSSENY SERVICE</title>
-<link rel="stylesheet" href="style.css">
+<title>Fousseny Service</title>
 <link rel="manifest" href="manifest.json">
 </head>
 
+<body style="font-family: Arial; text-align:center;">
+
+<h1>FOUSSENY SERVICE</h1>
+<p>Gestion Devis & Facture</p>
+
+<a href="devis.html">📄 Créer un Devis</a><br><br>
+<a href="facture.html">🧾 Créer une Facture</a>
+
 <script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-  .then(() => console.log("Service Worker enregistré"));
+ navigator.serviceWorker.register('service-worker.js');
 }
 </script>
-<body>
-
-<header>
-    <h1>FOUSSENY SERVICE</h1>
-    <p>Nous donnons un sens à votre maison avec les plafonds staff</p>
-</header>
-
-<div class="menu">
-    <a href="devis.html">📄 Créer un Devis</a>
-    <a href="facture.html">🧾 Créer une Facture</a>
-</div>
-
-<footer>
-FOUSSENY SERVICE – Kayes ATT Bougou – 82 91 57 09 / 64 85 32 98 – Info: 64 60 03 06
-</footer>
 
 </body>
 </html>
