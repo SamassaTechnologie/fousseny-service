@@ -1,0 +1,46 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+header {
+    text-align: center;
+    background: #0f4c4c;
+    color: white;
+    padding: 20px;
+}
+
+.menu {
+    margin: 30px;
+    text-align: center;
+}
+
+.menu a {
+    display: block;
+    margin: 10px;
+    padding: 15px;
+    background: #0f4c4c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+}

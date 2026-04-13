@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Facture</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>FACTURE</h2>
+
+<p>Date: <input type="date"></p>
+<p>Client: <input type="text"></p>
+
+<table id="table">
+<tr>
+<th>Qté</th>
+<th>Désignation</th>
+<th>Prix Unit</th>
+<th>Montant</th>
+</tr>
+</table>
+
+<button onclick="addRow()">➕ Ajouter</button>
+
+<h3>Total : <span id="total">0</span> FCFA</h3>
+
+<button onclick="window.print()">🖨️ Imprimer</button>
+
+<footer>
+FOUSSENY SERVICE – Kayes ATT Bougou – 82 91 57 09
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

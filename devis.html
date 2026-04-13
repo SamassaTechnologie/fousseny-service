@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Devis</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>DEVIS</h2>
+
+<input type="text" placeholder="Nom du client" id="client">
+
+<table id="table">
+<tr>
+<th>Qté</th>
+<th>Désignation</th>
+<th>Prix</th>
+<th>Total</th>
+</tr>
+</table>
+
+<button onclick="addRow()">➕ Ajouter</button>
+
+<h3>Total : <span id="total">0</span> FCFA</h3>
+
+<button onclick="window.print()">🖨️ Imprimer / PDF</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
