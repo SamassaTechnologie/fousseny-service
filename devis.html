@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devis - Fousseny Service</title>
+    <title>Facture - Fousseny Service</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,7 +46,8 @@
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                    </tbody>
+                    <!-- Les lignes d'articles seront ajoutées en JS -->
+                </tbody>
             </table>
 
             <div class="actions no-print">
@@ -69,6 +70,27 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Conditions générales et signature -->
+            <div class="conditions-area">
+                <strong>Conditions Générales :</strong>
+                <ul>
+                    <li>Facture valable 15 jours à compter de la date d’édition.</li>
+                    <li>Acompte de 40% à la commande, solde à la livraison.</li>
+                    <li>Les matériaux restent propriété de Fousseny Service jusqu’au paiement total.</li>
+                </ul>
+            </div>
+            <div class="signature-area">
+                <div class="signature-block">
+                    <strong>Signature Client</strong>
+                    <div class="sig-line"></div>
+                </div>
+                <div class="signature-block">
+                    <strong>Signature Entreprise</strong>
+                    <div class="sig-line"></div>
+                </div>
+            </div>
+            <!-- Fin conditions/signature -->
 
             <footer class="footer-contact">
                 <div class="contact-grid">
